@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import Cards from "../components/Cards";
+import Header from "../components/Header";
 import { FetchContext } from "../context/FetchDataContext";
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
 
   return (
     <Container>
+      <Header />
       <Row className="gap-5 my-5">
         <Col md={4}>
           <Form>

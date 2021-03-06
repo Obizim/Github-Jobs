@@ -1,15 +1,18 @@
 import './styles/App.scss';
-import Header from './components/Header';
 import Home from './pages/Home';
 import FetchDataContext from './context/FetchDataContext';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import JobDetail from './pages/JobDetail';
 
 function App() {
   return (
     <FetchDataContext>
-    <div className="App">
-      <Header />
-      <Home />
-    </div>
+    <Router>
+      <Switch>
+      <Route path="/" exact component={Home} />
+      <Route path="/position/:id" component={JobDetail} />
+      </Switch>
+    </Router>
     </FetchDataContext>
   );
 }

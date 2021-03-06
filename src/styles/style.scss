@@ -8,10 +8,26 @@
     border-radius: 8px;
     padding: 3rem 1rem;
 }
+
+.company_logo{
+    object-fit: contain;
+    width: 5.625rem;
+    height: 5.625rem;
+    margin: .5rem;
+}
+
 .cards {
     font-size: .8rem;
 }
 
 input[type="radio"], input[type="checkbox"] {
     cursor: pointer;
+}
+
+.description {
+    word-break: break-word;
+
+    a {
+        color: rgb(99, 34, 185);
+    }
 }

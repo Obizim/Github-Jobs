@@ -16,11 +16,16 @@ body {
   font-family: "Poppins", sans-serif;
   overflow-x: hidden;
   font-weight: 400;
+  font-size: .9rem;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+h1 {
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
 ul {
@@ -29,4 +34,12 @@ ul {
   li {
     margin: 10px;
   }
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+button {
+  font-size: unset !important;
 }

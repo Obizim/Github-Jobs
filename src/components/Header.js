@@ -1,5 +1,4 @@
 import {
-  Container,
   Button,
   Form,
   InputGroup,
@@ -7,17 +6,17 @@ import {
 
 const Header = () => {
   return (
-      <Container className="my-4">
+      <header className="my-4">
           <h4><span className="title">Github</span> Jobs</h4>
     <section className="header my-4">
         <Form>
           <InputGroup >
-            <Form.Control placeholder="Titles,Companies,Country" />
+            <Form.Control placeholder="Language/Framework e.g Node" />
               <Button variant="primary">Search</Button>
           </InputGroup>
         </Form>
     </section>
-    </Container>
+    </header>
   );
 };
 

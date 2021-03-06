@@ -8,6 +8,7 @@ const FetchDataContext = ({children}) => {
     const [location,setLocation] = useState("")
 
     const fetchJobs = useCallback(() => {
+        setLoading(true)
         let url;
         if (location !== "") {
           url = `https://thingproxy.freeboard.io/fetch/https://jobs.github.com/positions.json?description=&location=${location}`;
