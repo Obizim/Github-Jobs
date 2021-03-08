@@ -31,10 +31,10 @@ const JobDetail = () => {
   }, [id]);
 
   return loading ? (
-      <div className="vh-100 d-flex align-items-center justify-content-center">
-    <Spinner animation="border" role="status" variant="primary">
-      <span className="sr-only">Loading...</span>
-    </Spinner>
+    <div className="vh-100 d-flex align-items-center justify-content-center">
+      <Spinner animation="border" role="status" variant="primary">
+        <span className="sr-only">Loading...</span>
+      </Spinner>
     </div>
   ) : (
     <Container className="my-4">

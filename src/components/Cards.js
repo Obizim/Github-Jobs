@@ -10,11 +10,13 @@ const Cards = () => {
     <Spinner animation="border" role="status" variant="primary">
       <span className="sr-only">Loading...</span>
     </Spinner>
+  ) : jobs.length < 1 ? (
+    <p>There are no jobs here at this time...</p>
   ) : (
     <section>
       {jobs.map(({ id, company_logo, company, title, type, location }) => (
         <Link to={`/position/${id}`} key={id}>
-          <Card className="cards d-flex flex-row align-items-center px-4 my-3 rounded">
+          <Card className="cards d-flex flex-row align-items-center px-4 my-3 rounded-3">
             <Card.Img
               className="company_logo"
               src={company_logo}

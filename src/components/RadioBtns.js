@@ -23,6 +23,7 @@ const RadioBtns = () => {
             placeholder="country"
             value={inputLocation}
             onChange={onhandleSearch}
+            checked="checked"
           />
         </Form.Group>
       </Form>

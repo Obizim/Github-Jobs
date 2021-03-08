@@ -1,9 +1,10 @@
 // So, since this is a relatively small application, I will just make use of only one Context File
+// Would have loved to make fetch API a reusable component but i'm just gonna leave like that
 
 import { createContext, useCallback, useState } from "react";
 
 export const FetchContext = createContext();
-export const data = ["London", "Amsterdam", "NewYork", "Berlin"];
+export const data = ["London", "Amsterdam", "New York", "Berlin"];
 
 const FetchDataContext = ({ children }) => {
   const [loading, setLoading] = useState(true);
@@ -11,6 +12,7 @@ const FetchDataContext = ({ children }) => {
   const [location, setLocation] = useState("");
   const [checked, setChecked] = useState(false);
   const [inputLocation, setInputLocation] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const fetchJobs = useCallback(() => {
     setLoading(true);
@@ -31,7 +33,6 @@ const FetchDataContext = ({ children }) => {
       .then((res) => res.json())
       .then((res) => {
         setJobs(res);
-        console.log(res);
         setLoading(false);
       });
   }, [location, checked]);
@@ -41,23 +42,46 @@ const FetchDataContext = ({ children }) => {
     setLocation(e.target.value);
   };
 
-  const onCheckedBox = (e) => {
-    setChecked(e.target.checked);
+  const onFormSearch = (e) => {
+    setSearchTerm(e.target.value);
   };
 
-  const onhandleSubmit = (e) => {
-    e.preventDefault();
-    if (inputLocation) {
-      if(data.includes(inputLocation) === false){
-        data.unshift(inputLocation);
-        setInputLocation("");
-      }
-    }
+  const onCheckedBox = (e) => {
+    setChecked(e.target.checked);
   };
 
   function onhandleSearch(e) {
     setInputLocation(e.target.value);
   }
+
+  const onhandleSubmit = (e) => {
+    e.preventDefault();
+    if (inputLocation) {
+      const stringCapitalized =
+        inputLocation.charAt(0).toUpperCase() + inputLocation.slice(1);
+      if (data.includes(stringCapitalized) === false) {
+        data.unshift(stringCapitalized);
+        setLocation(stringCapitalized);
+        setInputLocation("");
+      }
+    }
+  };
+
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    if (searchTerm) {
+      setLoading(true);
+      fetch(
+        `https://thingproxy.freeboard.io/fetch/https://jobs.github.com/positions.json?search=${searchTerm}`
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          setJobs(res);
+          setSearchTerm("");
+          setLoading(false);
+        });
+    }
+  };
 
   return (
     <FetchContext.Provider
@@ -71,6 +95,9 @@ const FetchDataContext = ({ children }) => {
         inputLocation,
         onhandleSearch,
         onhandleSubmit,
+        searchTerm,
+        onFormSearch,
+        onFormSubmit,
       }}
     >
       {children}
