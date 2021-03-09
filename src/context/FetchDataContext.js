@@ -18,10 +18,10 @@ const FetchDataContext = ({ children }) => {
     setLoading(true);
     let url;
     if (location !== "") {
-      url = `https://thingproxy.freeboard.io/fetch/https://jobs.github.com/positions.json?description=&full_time=${checked}&location=${location}`;
+      url = `https://cors.bridged.cc/https://jobs.github.com/positions.json?description=&full_time=${checked}&location=${location}`;
     } else {
       url =
-        "https://thingproxy.freeboard.io/fetch/https://jobs.github.com/positions.json?description=&location=";
+        "https://cors.bridged.cc/https://jobs.github.com/positions.json?description=&location=";
     }
     fetch(url, {
       headers: {
@@ -72,7 +72,7 @@ const FetchDataContext = ({ children }) => {
     if (searchTerm) {
       setLoading(true);
       fetch(
-        `https://thingproxy.freeboard.io/fetch/https://jobs.github.com/positions.json?search=${searchTerm}`
+        `https://cors.bridged.cc/https://jobs.github.com/positions.json?search=${searchTerm}`
       )
         .then((res) => res.json())
         .then((res) => {

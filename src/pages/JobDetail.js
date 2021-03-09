@@ -11,7 +11,7 @@ const JobDetail = () => {
   useEffect(() => {
     const fetchJobDetail = () => {
       fetch(
-        `https://thingproxy.freeboard.io/fetch/https://jobs.github.com/positions/${id}.json`,
+        `https://cors.bridged.cc/https://jobs.github.com/positions/${id}.json`,
         {
           headers: {
             Accept: "application/json",
@@ -23,6 +23,7 @@ const JobDetail = () => {
         .then((res) => res.json())
         .then((res) => {
           setJob(res);
+          console.log(res);
           setLoading(false);
         });
     };
